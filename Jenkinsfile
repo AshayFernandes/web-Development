@@ -7,8 +7,10 @@ pipeline {
      stage("build") {
        
          steps {
+           script {
            def pw = pwd()
            echo "building the application..${pw}"
+           }
            
          }
      
