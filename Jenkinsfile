@@ -18,23 +18,12 @@ node() {
             parameters(
                 [
                     booleanParam(defaultValue: false,
-                            description: 'Run Integration Tests',
-                            name: 'RUN_TESTS'),
-                    booleanParam(defaultValue: false,
-                            description: 'Build athena kong image',
-                            name: 'BUILD_KONG_IMAGE'),
-                    booleanParam(defaultValue: false,
-                            description: 'DO Deployment',
-                            name: 'DO_DEPLOYMENT'),
-                    booleanParam(defaultValue: false,
-                            description: 'Enable plugins',
-                            name: 'ENABLE_PLUGINS'),
+                            description: 'Update the defaut service level configurations with service specific ones',
+                            name: 'UPDATE_SERVICE_OUTLIERS'),                   
                     string(defaultValue: 'https://kong-dev-admin.gateway.aws.athenahealth.com',
                             description: 'Kong admin URL',
                             name: 'ADMIN_URL'),
-                    string(defaultValue: 'http://gatewaynode.dev.api.athena.io/scopes/verify',
-                            description: 'Authorization URL',
-                            name: 'AUTH_URL')
+                    
                 ]
             )
         ]
@@ -44,5 +33,14 @@ node() {
     //     pipeline = new cicd.Pipeline();
     //     pipeline.cleanupAndCheckout();
     // }
+    
+    if(env.UPDATE_SERVICE_OUTLIERS == 'true') {
+       
+        def myfile = readFile("./file.txt")
+        
+        echo "${myfile}"
+       
+    
+    }
 
 }
